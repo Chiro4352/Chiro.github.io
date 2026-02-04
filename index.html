@@ -2,63 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Study Portal</title>
   <style>
+    /* Reset & general styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f2f5f7;
+      color: #333;
     }
+    a { text-decoration: none; color: inherit; }
 
+    /* Container styles */
     .container {
-      background: white;
+      max-width: 900px;
+      margin: 50px auto;
+      background: #fff;
       padding: 30px;
-      border-radius: 10px;
-      text-align: center;
-      width: 320px;
+      border-radius: 12px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
     h1 {
-      margin-bottom: 10px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1a73e8;
     }
 
-    p {
-      color: #555;
-    }
+    p { margin-bottom: 20px; line-height: 1.5; }
 
-    button {
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      background: #007bff;
-      color: white;
-      cursor: pointer;
-      margin-top: 10px;
+    /* Study page images */
+    .study-images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
     }
-
-    button:hover {
-      background: #0056b3;
+    .study-images img {
+      width: 200px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
     }
+    .study-images img:hover { transform: scale(1.05); }
 
+    /* Login form */
+    .login-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
     input {
+      padding: 10px;
+      width: 70%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background-color: #1a73e8;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover { background-color: #155ab6; }
+
+    #error { color: red; font-weight: bold; }
+
+    /* Hide sections by default */
+    .hidden { display: none; }
+
+    /* Games placeholder */
+    .game-player {
       width: 100%;
-      padding: 8px;
-      margin-top: 10px;
-      box-sizing: border-box;
+      height: 400px;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      border-radius: 10px;
+      margin-top: 20px;
     }
 
-    .hidden {
-      display: none;
-    }
-
-    #error {
-      color: red;
-      margin-top: 8px;
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+      color: #777;
     }
   </style>
 </head>
@@ -66,62 +109,60 @@
 
   <!-- STUDY PAGE -->
   <div class="container" id="studyPage">
-    <h1>📚 Study Portal</h1>
-    <p>Welcome. Please log in to access your study tools.</p>
+    <h1>Welcome to Study Portal</h1>
+    <p>Enhance your learning! Browse resources or play educational games after logging in.</p>
 
-    <button onclick="showLogin()">Login</button>
+    <div class="study-images">
+      <img src="https://images.unsplash.com/photo-1596495577886-d920f1a0d033?crop=entropy&cs=tinysrgb&fit=crop&h=200&w=300" alt="Study Image 1">
+      <img src="https://images.unsplash.com/photo-1581091215360-4f34e7f3ff17?crop=entropy&cs=tinysrgb&fit=crop&h=200&w=300" alt="Study Image 2">
+      <img src="https://images.unsplash.com/photo-1581091870628-0b888d6f0907?crop=entropy&cs=tinysrgb&fit=crop&h=200&w=300" alt="Study Image 3">
+    </div>
 
-    <div id="loginBox" class="hidden">
-      <input
-        type="password"
-        id="password"
-        placeholder="Enter access code"
-        onkeydown="handleKey(event)"
-      >
-      <button onclick="checkPassword()">Enter</button>
+    <div class="login-box">
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="checkLogin()">Login</button>
       <p id="error"></p>
     </div>
   </div>
 
   <!-- GAMES PAGE -->
   <div class="container hidden" id="gamesPage">
-    <h1>🎮 Study Tools</h1>
-    <p>Games will be added here later.</p>
+    <h1>🎮 Games Page</h1>
+    <p>Here you can play educational games. More will be added soon!</p>
+
+    <!-- Placeholder for game player -->
+    <div class="game-player">[Game Player Placeholder]</div>
 
     <button onclick="logout()">Log Out</button>
   </div>
 
+  <footer>
+    © 2026 Study Portal | Images via Unsplash
+  </footer>
+
   <script>
-    function showLogin() {
-      document.getElementById("loginBox").classList.remove("hidden");
-    }
-
-    function checkPassword() {
+    function checkLogin() {
       const password = document.getElementById("password").value;
+      const username = document.getElementById("username").value;
 
-      if (password === "1234") {
+      if(password === "1234") {
         document.getElementById("studyPage").classList.add("hidden");
         document.getElementById("gamesPage").classList.remove("hidden");
+        document.getElementById("error").textContent = "";
       } else {
-        document.getElementById("error").textContent = "Incorrect code.";
-      }
-    }
-
-    function handleKey(event) {
-      if (event.key === "Enter") {
-        checkPassword();
+        document.getElementById("error").textContent = "Incorrect password. Hint: try 1234";
       }
     }
 
     function logout() {
+      document.getElementById("username").value = "";
       document.getElementById("password").value = "";
       document.getElementById("error").textContent = "";
-      document.getElementById("loginBox").classList.add("hidden");
-
       document.getElementById("gamesPage").classList.add("hidden");
       document.getElementById("studyPage").classList.remove("hidden");
     }
   </script>
-
 </body>
 </html>
+
