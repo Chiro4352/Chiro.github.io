@@ -3,122 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Study Portal</title>
+  <title>Study & Games Portal</title>
   <style>
-    /* Reset & base */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#f2f5f7; color:#333; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #eef2f7; color: #333; }
+    .hidden { display: none; }
 
-    /* Container */
-    .container { max-width: 1000px; margin: 50px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    /* PRO container */
+    .container { max-width: 1000px; margin: 40px auto; background: #fff; padding: 25px; border-radius: 10px; box-shadow: 0 7px 18px rgba(0,0,0,0.1); }
+    h1 { color: #1e3a8a; text-align: center; margin-bottom: 20px; }
 
-    h1 { text-align:center; margin-bottom:20px; color:#1a73e8; }
-    p { margin-bottom:20px; line-height:1.5; }
+    /* Hero section */
+    .hero { text-align:center; }
+    .hero img { width: 100%; border-radius: 8px; }
 
-    /* Hero Image */
-    .hero-img { width:100%; max-height:400px; object-fit:cover; border-radius:12px; margin-bottom:30px; }
-
-    /* Features Section */
-    .features { display:flex; justify-content:space-around; flex-wrap:wrap; gap:15px; margin-bottom:30px; }
-    .feature { flex:1 1 250px; background:#f7f9fb; padding:20px; border-radius:12px; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
-    .feature h3 { color:#1a73e8; margin-bottom:10px; }
+    /* Feature cards */
+    .features { display: flex; gap: 15px; justify-content: space-around; flex-wrap: wrap; margin: 25px 0; }
+    .feature { background: #f7f9fc; padding: 18px; border-radius: 8px; width: 30%; text-align:center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .feature h3 { color: #1e40af; margin-bottom: 10px; }
 
     /* Login */
-    .login-box { display:flex; flex-direction:column; align-items:center; gap:10px; margin-bottom:20px; max-width:400px; margin-left:auto; margin-right:auto; }
-    input { padding:10px; width:100%; border-radius:6px; border:1px solid #ccc; font-size:16px; }
-    button { padding:10px 20px; border:none; border-radius:6px; background-color:#1a73e8; color:#fff; font-size:16px; cursor:pointer; transition:0.2s; }
-    button:hover { background-color:#155ab6; }
-    #error { color:red; font-weight:bold; }
+    .login-box { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; max-width:400px; margin:auto; }
+    input { padding: 10px; border: 1px solid #aaa; border-radius: 6px; font-size: 16px; width:100%; }
+    button { padding: 10px; background: #1e40af; color:white; border:none; border-radius:6px; cursor:pointer; font-size:16px; }
+    button:hover { background: #1a2f8a; }
+    #error { color:red; font-size:14px; text-align:center; }
 
-    /* Hide sections */
-    .hidden { display:none; }
+    /* Loader */
+    .loader { text-align:center; margin-top:30px; font-size:18px; }
 
-    /* Game page */
-    .game-container { display:flex; flex-direction:column; gap:20px; }
-    .game-frame { border-radius:12px; overflow:hidden; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
+    /* Game hub buttons */
+    .game-list { display:flex; gap:15px; justify-content:center; flex-wrap:wrap; }
+    .game-btn { padding: 12px 18px; background:#2563eb; color:white; border:none; border-radius:6px; cursor:pointer; font-size:16px; margin-top:15px; }
+    .game-btn:hover { background:#1e40af; }
 
-    footer { text-align:center; margin-top:30px; font-size:14px; color:#777; }
+    /* iframe wrapper */
+    .game-frame { width:100%; height:500px; border:none; margin-top:20px; border-radius:10px; }
+
+    /* Credits */
+    footer { margin-top:30px; text-align:center; font-size:14px; color:#555; }
   </style>
 </head>
 <body>
 
   <!-- STUDY PAGE -->
   <div class="container" id="studyPage">
-    <h1>Welcome to Study Portal</h1>
-    <p>Learn faster, track your progress, and play fun educational games!</p>
-    <img class="hero-img" src="https://images.unsplash.com/photo-1596495577886-d920f1a0d033?crop=entropy&cs=tinysrgb&fit=crop&h=400&w=1000" alt="Study Hero Image">
-
-    <!-- Features -->
-    <div class="features">
-      <div class="feature">
-        <h3>Learn Faster</h3>
-        <p>Interactive tools to enhance memory and retention.</p>
-      </div>
-      <div class="feature">
-        <h3>Track Progress</h3>
-        <p>Visualize your growth and achievements every day.</p>
-      </div>
-      <div class="feature">
-        <h3>Play Games</h3>
-        <p>Fun HTML5 games to apply what you’ve learned.</p>
-      </div>
+    <h1>Study & Games Portal</h1>
+    <div class="hero">
+      <img src="https://images.unsplash.com/photo-1581091870628-0b888d6f0907?crop=entropy&cs=tinysrgb&fit=crop&h=400&w=1000" alt="Learning Header">
     </div>
 
-    <!-- Login -->
+    <div class="features">
+      <div class="feature"><h3>Learn Faster</h3><p>Tools and resources designed for focused improvement.</p></div>
+      <div class="feature"><h3>Track Progress</h3><p>Monitor your achievements and continue growing.</p></div>
+      <div class="feature"><h3>Play Games</h3><p>Fun, educational games fully embedded right here.</p></div>
+    </div>
+
     <div class="login-box">
       <input type="text" id="username" placeholder="Username">
       <input type="password" id="password" placeholder="Password">
-      <button onclick="checkLogin()">Login</button>
+      <button onclick="attemptLogin()">Login</button>
       <p id="error"></p>
     </div>
   </div>
 
-  <!-- GAMES PAGE -->
-  <div class="container hidden" id="gamesPage">
-    <h1>🎮 Games Page</h1>
-    <p>Play educational games below. More games coming soon!</p>
-
-    <div class="game-container">
-      <!-- Example Game 1 -->
-      <div class="game-frame">
-        <iframe src="https://crazygames.com/embed/20447" width="100%" height="400" style="border:none;"></iframe>
-      </div>
-
-      <!-- Example Game 2 -->
-      <div class="game-frame">
-        <iframe src="https://crazygames.com/embed/19406" width="100%" height="400" style="border:none;"></iframe>
-      </div>
-    </div>
-
-    <button style="margin-top:20px;" onclick="logout()">Log Out</button>
+  <!-- LOADING SCREEN -->
+  <div class="container hidden" id="loadingScreen">
+    <h1>Checking user...</h1>
+    <div class="loader">⏳ Verifying credentials...</div>
   </div>
 
-  <footer>
-    © 2026 Study Portal | Images via Unsplash | Games via CrazyGames
-  </footer>
+  <!-- GAMES HUB -->
+  <div class="container hidden" id="gamesHub">
+    <h1>🎮 Games Hub</h1>
+    <p>Select a game to play:</p>
+
+    <div class="game-list">
+      <button class="game-btn" onclick="showGame('game1')">Dune Tiny Wings</button>
+      <button class="game-btn" onclick="showGame('game2')">Tower Crush TD</button>
+      <button class="game-btn" onclick="showCredits()">Credits</button>
+    </div>
+
+    <!-- Games frame -->
+    <iframe id="gameFrame" class="game-frame hidden"></iframe>
+
+    <button onclick="logout()" style="margin-top:25px;">Logout</button>
+  </div>
+
+  <!-- CREDITS -->
+  <div class="container hidden" id="creditsPage">
+    <h1>📜 Credits</h1>
+    <p>Site by CPGames</p>
+    <p>Games powered by MadKidGames HTML5 embed system. :contentReference[oaicite:2]{index=2}</p>
+    <button onclick="backToHub()">Back to Games</button>
+  </div>
+
+  <footer>© 2026 CPGames</footer>
 
   <script>
-    function checkLogin() {
-      const password = document.getElementById("password").value;
-      const username = document.getElementById("username").value;
-      if(password === "1234") {
+    function attemptLogin() {
+      const pass = document.getElementById("password").value;
+      const err = document.getElementById("error");
+      if(pass === "1234") {
         document.getElementById("studyPage").classList.add("hidden");
-        document.getElementById("gamesPage").classList.remove("hidden");
-        document.getElementById("error").textContent = "";
+        document.getElementById("loadingScreen").classList.remove("hidden");
+        setTimeout(() => {
+          document.getElementById("loadingScreen").classList.add("hidden");
+          document.getElementById("gamesHub").classList.remove("hidden");
+        }, 2000);
       } else {
-        document.getElementById("error").textContent = "Incorrect password. Hint: 1234";
+        err.textContent = "Incorrect password — try 1234";
       }
     }
 
+    function showGame(game) {
+      document.getElementById("gameFrame").classList.remove("hidden");
+      if(game === 'game1') {
+        document.getElementById("gameFrame").src = "https://www.madkidgames.com/embed/dune-tiny-wings";
+      }
+      if(game === 'game2') {
+        document.getElementById("gameFrame").src = "https://www.madkidgames.com/embed/tower-crush-defense-td";
+      }
+    }
+
+    function showCredits() {
+      document.getElementById("gamesHub").classList.add("hidden");
+      document.getElementById("creditsPage").classList.remove("hidden");
+    }
+    function backToHub() {
+      document.getElementById("creditsPage").classList.add("hidden");
+      document.getElementById("gamesHub").classList.remove("hidden");
+      document.getElementById("gameFrame").classList.add("hidden");
+      document.getElementById("gameFrame").src = "";
+    }
     function logout() {
-      document.getElementById("username").value = "";
+      document.getElementById("gamesHub").classList.add("hidden");
+      document.getElementById("studyPage").classList.remove("hidden");
       document.getElementById("password").value = "";
       document.getElementById("error").textContent = "";
-      document.getElementById("gamesPage").classList.add("hidden");
-      document.getElementById("studyPage").classList.remove("hidden");
     }
   </script>
 </body>
 </html>
+
 
 
